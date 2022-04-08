@@ -12,7 +12,7 @@ RUN mkdir -p /opt/release \
     && mix release \
     && mv _build/${MIX_ENV}/rel/live_k8s_node /opt/release
 # Create the runtime container
-FROM erlang:24.1.3 as runtime
+FROM elixir:1.12.3 as runtime
 WORKDIR /usr/local/live_k8s_node
 COPY --from=builder /opt/release/live_k8s_node .
 CMD [ "bin/live_k8s_node", "start" ]
