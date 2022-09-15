@@ -18,6 +18,6 @@ defmodule LiveK8sNode do
 
   def send(n) do
     event = %{number: n, from: "#{Node.self}"}
-    Phoenix.PubSub.broadcast(LiveK8s.PubSub, "user:123", {:event, event})
+    Phoenix.PubSub.broadcast(LiveK8s.PubSub, "producer_topic", {:event, event})
   end
 end
